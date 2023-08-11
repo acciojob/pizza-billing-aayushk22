@@ -31,6 +31,7 @@ public class Pizza {
         // your code goes here
         if(!isExtraCheese) {
             isExtraCheese = true;
+            this.price += 80;
         }
 
     }
@@ -39,6 +40,10 @@ public class Pizza {
         // your code goes here
         if(!isExtraToppings) {
             isExtraToppings = true;
+            if (isVeg) {
+                this.price += 70;
+            }
+            else this.price += 120;
         }
     }
 
@@ -46,6 +51,7 @@ public class Pizza {
         // your code goes here
         if(!isTakeAway) {
             isTakeAway = true;
+            this.price += 20;
         }
     }
 
@@ -58,24 +64,24 @@ public class Pizza {
 
         if (isExtraCheese) {
             this.bill += "Extra Cheese Added: 80 \n";
-            this.price += 80;
+
         }
 
         if (isExtraToppings) {
             if (isVeg) {
                 this.bill += "Extra Toppings Added: 70 \n";
-                this.price += 70;
+
             }
 
             else {
                 this.bill += "Extra Toppings Added: 120 \n";
-                this.price += 120;
+
             }
         }
 
         if (isTakeAway) {
             this.bill += "Paperbag Added: 20 \n";
-            this.price += 20;
+
         }
 
         this.bill += "Total Price: " + this.getPrice() + " \n";
