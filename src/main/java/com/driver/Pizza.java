@@ -8,6 +8,7 @@ public class Pizza {
     private Boolean isExtraCheese;
     private Boolean isExtraToppings;
     private Boolean isTakeAway;
+    private Boolean isBillGenerated;
 
     public Pizza(Boolean isVeg){
         this.isVeg = isVeg;
@@ -20,6 +21,7 @@ public class Pizza {
         this.isExtraCheese=false;
         this.isExtraToppings = false;
         this.isTakeAway = false;
+        this.isBillGenerated = false;
     }
 
     public int getPrice(){
@@ -57,34 +59,35 @@ public class Pizza {
 
     public String getBill(){
         // your code goes here
-        if (this.isVeg) {
-            this.bill += "Base Price Of The Pizza: 300\n";
-        }
-        else this.bill += "Base Price Of The Pizza: 400\n";
+        if (!isBillGenerated) {
+            isBillGenerated = true;
+            if (this.isVeg) {
+                this.bill += "Base Price Of The Pizza: 300\n";
+            } else this.bill += "Base Price Of The Pizza: 400\n";
 
-        if (this.isExtraCheese) {
-            this.bill += "Extra Cheese Added: 80\n";
-
-        }
-
-        if (this.isExtraToppings) {
-            if (isVeg) {
-                this.bill += "Extra Toppings Added: 70\n";
+            if (this.isExtraCheese) {
+                this.bill += "Extra Cheese Added: 80\n";
 
             }
 
-            else {
-                this.bill += "Extra Toppings Added: 120\n";
+            if (this.isExtraToppings) {
+                if (isVeg) {
+                    this.bill += "Extra Toppings Added: 70\n";
+
+                } else {
+                    this.bill += "Extra Toppings Added: 120\n";
+
+                }
+            }
+
+            if (this.isTakeAway) {
+                this.bill += "Paperbag Added: 20\n";
 
             }
+
+            this.bill += "Total Price: " + getPrice() + "\n";
+            return this.bill;
         }
-
-        if (this.isTakeAway) {
-            this.bill += "Paperbag Added: 20\n";
-
-        }
-
-        this.bill += "Total Price: " + getPrice() + "\n";
-        return this.bill;
+        return null;
     }
 }
