@@ -63,6 +63,9 @@ public class Pizza {
 //            if (this.isBillGenerated) {
 //                return null;
 //            }
+            if (this.isBillGenerated == true) {
+                return this.bill;
+            }
             isBillGenerated = true;
             if (this.isVeg) {
                 this.bill += "Base Price Of The Pizza: 300\n";
